@@ -1,0 +1,42 @@
+.wrapper {
+	width: 100%;
+	height: 100vh;
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+}
+
+.table {
+	width: 208px;
+	height: 208px;
+	display: flex;
+	flex-wrap: wrap;
+	border: 3px solid #8D31CD;
+}
+
+.block {
+	width: 50px;
+	height: 50px;
+	background: #0AAEEB;
+	text-align: center;
+	vertical-align: center;
+	border: 1px solid #fff;
+}
+
+.value {
+	color: #fff;
+	font-size: 17px;
+}
+
+.winner {
+	color: #D31515;
+	font-size: 26px;
+
+}
+
+button {
+	background: #0AAEEB;
+	color: #fff;
+	border: 2px solid #8D31CD;
+}
