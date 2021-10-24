@@ -2,8 +2,13 @@ var vue = new Vue({
     el: '#app',
     data() {
         return {
-            tableСells: [[1, 2, 3, 4], [5, 6, 7, 8], [9, 10, 11, 12], [13, 14, 15, '']],
-            tableValues: [],
+            tableСells: [//массив для поиска пустого места
+                [1, 2, 3, 4], 
+                [5, 6, 7, 8], 
+                [9, 10, 11, 12], 
+                [13, 14, 15, '']
+            ],
+            tableValues: [],//массив для отображения таблицы 
 
             clickValue: 0,
 
@@ -106,9 +111,9 @@ var vue = new Vue({
             this.searchVoid(n, m)
         },
 
-        searchVoid(n, m) {
+        searchVoid(n, m) {//осуществляем проверку значений выше ниже справа и слева от выбранной ячейки
             let j = -1;
-
+            
 
             for (let i = 0; i < 2; i++) {
 
@@ -130,10 +135,12 @@ var vue = new Vue({
             }
         },
 
-        valueExchange(n, m, i, j) {
+        valueExchange(n, m, i, j) {//n, m индексы ячейки на которую нажали; i, j индексы ячейки с пустотой
+            //поменял местами значения в двойном массиве
             this.tableСells[n][m] = this.tableСells[i][j];
             this.tableСells[i][j] = this.clickValue;
 
+            //поменял местами значения в массиве отображения
             let indexVoid = this.tableValues.findIndex(num => num.value == this.tableСells[n][m]);
             let indexValue = this.tableValues.findIndex(num => num.value == this.clickValue)
             this.tableValues[indexValue].value = this.tableСells[n][m];
