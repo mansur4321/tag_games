@@ -21,15 +21,41 @@ var vue = new Vue({
 
        // если хотите проверить на возможность победы, но лень играть, закомментируйте этот цикл
        //и парой кликов победите
-        for (let i = 0; i < 4; i++) {
-            for (let j = 0; j < 4; j++) {
-                let n = Math.floor(Math.random() * 4);
-                let m = Math.floor(Math.random() * 4);
+        let indexI = 3;
+        let indexJ = 3;
 
-                let interim = arr[i][j];
-                arr[i][j] = arr[n][m];
-                arr[n][m] = interim;
+        for (let i = 0; i < 3000; i++) {
+            let rnd1 = Math.floor(Math.random() * 2);
+            let rnd2 =Math.floor(Math.random() * 2); 
+
+            if (rnd1 == 1) {
+                n = rnd1;
+            } else {
+                n = -1;
             }
+
+            if (rnd2 == 1) {
+                m = rnd2;
+            } else {
+                m = -1;
+            }
+
+            if (n + indexI < 4 && n + indexI > -1) {
+                indexI += n;
+                let c = arr[indexI][indexJ];
+                arr[indexI][indexJ] = arr[indexI - n][indexJ];
+                arr[indexI - n][indexJ] = c;
+                continue;
+            }
+
+            if (m + indexJ < 4 && m + indexJ > -1) {
+                indexJ += m;
+                let c = arr[indexI][indexJ];
+                arr[indexI][indexJ] = arr[indexI][indexJ - m];
+                arr[indexI][indexJ - m] = c;
+                continue;
+            }
+
         }
 
         for (let i = 0; i < 4; i++) {
@@ -58,17 +84,41 @@ var vue = new Vue({
         },
 
         arrayRandomization(arr) {
+            let indexI = 3;
+            let indexJ = 3;
 
-            for (let i = 0; i < 4; i++) {
-                
-                for (let j = 0; j < 4; j++) {
-                    let n = Math.floor(Math.random() * 4);
-                    let m = Math.floor(Math.random() * 4);
+            for (let i = 0; i < 3000; i++) {
+                let rnd1 = Math.floor(Math.random() * 2);
+                let rnd2 = Math.floor(Math.random() * 2); 
 
-                    let interim = arr[i][j];
-                    arr[i][j] = arr[n][m];
-                    arr[n][m] = interim;
+                if (rnd1 == 1) {
+                    n = rnd1;
+                } else {
+                    n = -1;
                 }
+
+                if (rnd2 == 1) {
+                    m = rnd2;
+                } else {
+                    m = -1;
+                }
+
+                if (n + indexI < 4 && n + indexI > -1) {
+                    indexI += n;
+                    let c = arr[indexI][indexJ];
+                    arr[indexI][indexJ] = arr[indexI - n][indexJ];
+                    arr[indexI - n][indexJ] = c;
+                    continue;
+                }
+
+                if (m + indexJ < 4 && m + indexJ > -1) {
+                    indexJ += m;
+                    let c = arr[indexI][indexJ];
+                    arr[indexI][indexJ] = arr[indexI][indexJ - m];
+                    arr[indexI][indexJ - m] = c;
+                    continue;
+                }
+
             }
 
 
